@@ -1,0 +1,26 @@
+# Jupyter notebook checkpoints and cache
+**/.ipynb_checkpoints/
+**/__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Local data and outputs (students will mount these)
+data/
+notebooks/
+crds_cache/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# VCS / IDE / Editor folders
+.vscode/
+*.swp
+*.swo
+*.bak
+
+# Python environment files (not needed for Docker build)
+.env
+.venv
+*.egg-info/

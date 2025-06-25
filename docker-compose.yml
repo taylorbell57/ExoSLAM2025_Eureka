@@ -1,0 +1,11 @@
+version: "3.8"
+
+services:
+  exoslam2025:
+    image: taylorbell57/exoslam2025_eureka:latest
+    ports:
+      - "8888:8888"
+    volumes:
+      - ./notebooks:/home/jwst/notebooks
+      - ./crds_cache:/home/jwst/crds_cache
+      - ./data:/home/jwst/data

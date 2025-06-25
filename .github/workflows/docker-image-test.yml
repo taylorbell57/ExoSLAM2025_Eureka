@@ -1,0 +1,36 @@
+name: Docker Build and Eureka Test
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  docker-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Build Docker image
+        run: |
+          docker build -t exoslam2025:test .
+
+      - name: Smoke test - Jupyter Lab is available?
+        run: |
+          docker run --rm --entrypoint "" exoslam2025:test jupyter lab --version
+
+      - name: Smoke test - Eureka! is available?
+        run: |
+          docker run --rm --entrypoint "" exoslam2025:test \
+            python -c "import eureka; print(eureka.__version__)"
+
+      - name: Run Eureka test suite inside Docker
+        run: |
+          docker run --rm \
+            -v $(mktemp -d):/home/jwst/crds_cache \
+            --entrypoint "" \
+            exoslam2025:test \
+            bash -c "cd Eureka && pytest -x -v --tb=long --capture=no tests"
