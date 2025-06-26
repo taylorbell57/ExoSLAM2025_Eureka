@@ -24,6 +24,24 @@ jobs:
         run: |
           docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/exoslam2025_eureka:${TAG} .
 
-      - name: Push Docker image
+      - name: Push version tag to Docker Hub
         run: |
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/exoslam2025_eureka:${TAG}
+
+      - name: Determine if this is the latest version
+        id: semver
+        run: |
+          git fetch --tags
+          CURRENT_TAG=${GITHUB_REF##*/}
+          ALL_TAGS=$(git tag | grep -E '^v[0-9]' | sed 's/^v//' | sort -Vr)
+          HIGHEST_TAG=v$(echo "$ALL_TAGS" | head -n 1)
+
+          echo "CURRENT_TAG=$CURRENT_TAG" >> $GITHUB_ENV
+          echo "HIGHEST_TAG=$HIGHEST_TAG" >> $GITHUB_ENV
+
+      - name: Tag as latest and push (if highest version)
+        if: env.CURRENT_TAG == env.HIGHEST_TAG
+        run: |
+          docker tag ${{ secrets.DOCKERHUB_USERNAME }}/exoslam2025_eureka:${CURRENT_TAG} \
+                     ${{ secrets.DOCKERHUB_USERNAME }}/exoslam2025_eureka:latest
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/exoslam2025_eureka:latest
