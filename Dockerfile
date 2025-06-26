@@ -27,6 +27,12 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/* && \
     conda clean -afy
 
+# Copy example notebooks into a safe location in the image
+COPY notebooks/ /opt/default_notebooks/
+
+# Fix TLS loading issue for batman by preloading OpenMP library
+ENV LD_PRELOAD=/opt/conda/lib/libgomp.so.1
+
 # Expose relevant folders and port
 EXPOSE 8888
 VOLUME ["/home/jwst/notebooks", "/home/jwst/data", "/home/jwst/crds_cache"]
@@ -34,7 +40,7 @@ VOLUME ["/home/jwst/notebooks", "/home/jwst/data", "/home/jwst/crds_cache"]
 # Metadata
 LABEL org.opencontainers.image.title="ExoSLAM Eureka! Tutorial"
 LABEL org.opencontainers.image.description="A Jupyter-based Docker environment for JWST data analysis using Eureka!"
-LABEL org.opencontainers.image.version="0.1"
+LABEL org.opencontainers.image.version="0.2"
 LABEL org.opencontainers.image.authors="Taylor James Bell <taylorbell57>"
 LABEL org.opencontainers.image.source="https://github.com/taylorbell57/ExoSLAM2025_Eureka"
 LABEL org.opencontainers.image.licenses="MIT"

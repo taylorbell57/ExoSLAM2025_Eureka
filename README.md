@@ -20,8 +20,7 @@ Before launching the container, organize your files like this on your machine:
 eureka_tutorial/
 ├── notebooks/          # Jupyter notebooks
 ├── crds_cache/         # CRDS reference files will be cached here automatically
-└── data/               # Data inputs and outputs
-    └── Stage0/         # Place your downloaded raw JWST data here
+└── data/               # Data inputs and outputs will be located within here
 ```
 
 Make sure the folder names match exactly — they’ll be mounted into the container.
@@ -85,7 +84,7 @@ Once the container starts:
 
 - Your content will be accessible under:
   - `/home/jwst/notebooks` (your notebooks)
-  - `/home/jwst/data` (including `Stage0`)
+  - `/home/jwst/data` (input and output data files)
   - `/home/jwst/crds_cache` (JWST reference files)
 
 JupyterLab may take a few seconds to load on first launch.
@@ -94,7 +93,7 @@ JupyterLab may take a few seconds to load on first launch.
 
 ## Tips
 
-- You don’t need a password or token — access is open by default
+- You don’t need a Jupyter password or token — access is open by default
 - Files saved in `notebooks/`, `crds_cache/`, and `data/` will persist on your machine
 - Restart the container anytime using Docker Desktop
 

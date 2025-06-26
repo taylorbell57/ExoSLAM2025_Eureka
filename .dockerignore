@@ -7,7 +7,6 @@
 
 # Local data and outputs (students will mount these)
 data/
-notebooks/
 crds_cache/
 
 # System files

@@ -5,10 +5,16 @@ set -e
 echo "Verifying volume mounts..."
 
 # Check notebooks folder
-if [ ! -d "/home/jwst/notebooks" ] || [ -z "$(ls -A /home/jwst/notebooks 2>/dev/null)" ]; then
-  echo "Error: The /home/jwst/notebooks folder is missing or empty."
+if [ ! -d "/home/jwst/notebooks" ]; then
+  echo "Error: The /home/jwst/notebooks folder is missing."
   echo "Please bind-mount your notebooks folder. See the README for instructions."
   exit 1
+fi
+
+# If notebooks folder is empty, copy in the default set
+if [ -z "$(ls -A /home/jwst/notebooks 2>/dev/null)" ]; then
+  echo "Notebook folder is empty. Copying in default tutorial notebooks..."
+  cp -r /opt/default_notebooks/* /home/jwst/notebooks/
 fi
 
 # Check data folder

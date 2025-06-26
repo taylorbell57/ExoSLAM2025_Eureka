@@ -8,6 +8,7 @@ __pycache__/
 
 # Data folders (excluded to avoid committing large JWST files or results)
 data
+notebooks/*Solutions.ipynb
 crds_cache
 *.fits
 *.gz
