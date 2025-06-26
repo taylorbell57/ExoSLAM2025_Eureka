@@ -15,7 +15,8 @@ SHELL ["/bin/bash", "-c"]
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
         build-essential \
-        git && \
+        git \
+        curl && \
     git clone -b exoslam2025 https://github.com/kevin218/Eureka.git && \
     mamba install python=3.13 -y -c conda-forge && \
     pip install --no-cache-dir './Eureka/[jwst,hst,test,docs,jupyter]' && \
@@ -41,6 +42,9 @@ LABEL org.opencontainers.image.licenses="MIT"
 # Copy entrypoint script
 COPY entrypoint.sh /home/jwst/entrypoint.sh
 RUN chmod +x /home/jwst/entrypoint.sh
+
+# Set default shell to bash
+ENV SHELL=/bin/bash
 
 # Start script
 ENTRYPOINT ["/home/jwst/entrypoint.sh"]

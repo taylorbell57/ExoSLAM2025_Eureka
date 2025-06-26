@@ -33,4 +33,4 @@ source activate "$CONDA_ENV"
 exec jupyter lab --ip=0.0.0.0 --no-browser --allow-root \
     --NotebookApp.token='' \
     --NotebookApp.password='' \
-    --notebook-dir=/home/jwst/notebooks
+    --notebook-dir=/home/jwst
