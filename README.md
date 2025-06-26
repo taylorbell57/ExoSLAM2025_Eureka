@@ -29,15 +29,24 @@ Make sure the folder names match exactly — they’ll be mounted into the conta
 
 ## Step-by-Step: Using Docker Desktop (GUI)
 
-### 1. Pull the Docker Image
+### 1. Get the Docker Image
 
+To download the Docker Image containing our Eureka! installation and our notebooks, follow one of these methods:
+
+#### Option A: Use Docker Desktop GUI (if supported)
 - Open Docker Desktop
-- Go to the **Images** tab
-- Click **Pull**
-- Enter the image name:
+- Click on the **Search** bar at the top
+- Type `ultrahot/exoslam2025_eureka` and press **Enter**
+- If found, click **Pull** to download the image
+
+#### Option B: Use the Terminal
+- Open your terminal or command prompt
+- Run the following command:
+  ```bash
+  docker pull ultrahot/exoslam2025_eureka:latest
   ```
-  taylorbell57/exoslam2025_eureka:latest
-  ```
+
+Once downloaded, the image will appear in Docker Desktop under the **Images** tab and then you're ready to launch it.
 
 ---
 
