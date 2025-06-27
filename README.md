@@ -14,11 +14,11 @@ Welcome to the JWST Data Analysis Tutorial using Eureka!, Docker, and JupyterLab
 
 ## Folder Structure
 
-Before launching the container, organize your files like this on your machine:
+Before launching the container, create the following folders on your machine:
 
 ```
 eureka_tutorial/
-├── notebooks/          # Jupyter notebooks
+├── notebooks/          # Jupyter notebooks will automatically be copied here
 ├── crds_cache/         # CRDS reference files will be cached here automatically
 └── data/               # Data inputs and outputs will be located within here
 ```
@@ -84,7 +84,7 @@ In the **"Container name"** field, enter a useful name like `exoslam2025`. This 
 | `eureka_tutorial/data`                                 | `/home/jwst/data`              |
 | `eureka_tutorial/crds_cache`                           | `/home/jwst/crds_cache`        |
 
-> **Important:** Make sure you're selecting the actual folder — not typing or pasting paths — to avoid issues. The folder must exist before launching.
+> ⚠️ **Important:** Make sure you're selecting the actual folder — not typing or pasting paths — to avoid issues. The folder must exist before launching.
 
 You can safely ignore the Environment variables section of the Optional Settings.
 
@@ -115,7 +115,7 @@ JupyterLab may take a few seconds to load on first launch.
 After you've launched the container and opened JupyterLab in your browser, please open and run the `0_Setup_Notebook.ipynb` notebook.
 This notebook will automatically download the required JWST `_uncal.fits` data files.
 
-⚠️ **Important:** The workshop venue may have slow internet access. Downloading the data in advance is very strongly recommended.
+> ⚠️ **Important:** The workshop venue may have slow internet access. Downloading the data in advance is very strongly recommended.
 
 ---
 
