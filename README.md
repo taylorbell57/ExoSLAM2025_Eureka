@@ -37,7 +37,8 @@ To download the Docker Image containing our Eureka! installation and our noteboo
 - Open Docker Desktop
 - Click on the **Search** bar at the top
 - Type `ultrahot/exoslam2025_eureka` and press **Enter**
-- If found, click **Pull** to download the image
+- If you don’t see the image in the search results, make sure you're logged into Docker Hub via Docker Desktop.
+- Once the image appears, click Pull to download it.
 
 #### Option B: Use the Terminal
 - Open your terminal or command prompt
@@ -52,14 +53,21 @@ Once downloaded, the image will appear in Docker Desktop under the **Images** ta
 
 ### 2. Run the Container
 
-After pulling the image, click **Run**, then follow these steps **carefully**:
+After pulling the image, click the **Run** play button, and then follow these steps **carefully**:
+
+#### Set Container Name
+
+Before launching the container, it's a good idea to give it a recognizable name so you can easily manage it later (e.g., restarting or deleting it).
+
+In the **"Container name"** field, enter a useful name like `exoslam2025`. This name will help you identify the container in Docker Desktop, especially if you're running more than one.
+
 
 #### Set Ports
 - Click **"Optional Settings"** (sometimes labeled **"Port Settings"**) → **"Port Mapping"**
 - Add the following mapping:
   ```
   Host:      8888
-  Container: 8888
+  Container: 8888 (this should already be set for you)
   ```
   This allows you to access Jupyter in your browser.
 
@@ -77,6 +85,8 @@ After pulling the image, click **Run**, then follow these steps **carefully**:
 | `eureka_tutorial/crds_cache`                           | `/home/jwst/crds_cache`        |
 
 > **Important:** Make sure you're selecting the actual folder — not typing or pasting paths — to avoid issues. The folder must exist before launching.
+
+You can safely ignore the Environment variables section of the Optional Settings.
 
 Once you have that all specified, then click **Run**.
 
@@ -97,6 +107,15 @@ Once the container starts:
   - `/home/jwst/crds_cache` (JWST reference files)
 
 JupyterLab may take a few seconds to load on first launch.
+
+---
+
+## 4. Required Before the Workshop
+
+After you've launched the container and opened JupyterLab in your browser, please open and run the `0_Setup_Notebook.ipynb` notebook.
+This notebook will automatically download the required JWST `_uncal.fits` data files.
+
+⚠️ **Important:** The workshop venue may have slow internet access. Downloading the data in advance is very strongly recommended.
 
 ---
 
