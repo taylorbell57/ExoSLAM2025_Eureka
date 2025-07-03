@@ -37,6 +37,6 @@ echo "Launching Jupyter Lab..."
 # Activate environment and run Jupyter Lab
 source activate "$CONDA_ENV"
 exec jupyter lab --ip=0.0.0.0 --no-browser --allow-root \
-    --NotebookApp.token='' \
-    --NotebookApp.password='' \
+    --ServerApp.token= \
+    --ServerApp.password= \
     --notebook-dir=/home/jwst
